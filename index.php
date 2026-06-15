@@ -21,7 +21,7 @@ if (isset($_GET['delete'])) {
     $message = "Exercise deleted.";
 }
 
-$result = $conn->query("SELECT * FROM workout_plans ORDER BY created_at DESC");
+$result = $conn->query("SELECT * FROM workout_plans ORDER BY id DESC");
 ?>
 <!DOCTYPE html>
 <html>
