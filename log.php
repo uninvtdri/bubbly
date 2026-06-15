@@ -54,7 +54,7 @@ $logs = $conn->query("SELECT * FROM workout_logs ORDER BY log_date DESC, id DESC
     Sets Done: <input type="number" name="sets_done" value="3" min="1"><br>
     Reps Done: <input type="number" name="reps_done" value="10" min="1"><br>
     Weight Used (kg): <input type="number" name="weight_used" step="0.5" value="0"><br>
-    Date: <input type="date" name="log_date" value="<?= date('Y-m-d') ?>" required><br>
+    Date: <input type="text" name="log_date" value="<?= date('Y-m-d') ?>" placeholder="YYYY-MM-DD" required><br>
     <button type="submit" name="log">Log Session</button>
   </p>
 </form>
