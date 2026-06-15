@@ -71,7 +71,7 @@ $history = $conn->query("SELECT * FROM body_stats ORDER BY recorded_date DESC");
       <option value="Female">Female</option>
       <option value="Other">Other</option>
     </select><br>
-    Date: <input type="date" name="recorded_date" value="<?= date('Y-m-d') ?>" required><br>
+    Date: <input type="text" name="recorded_date" value="<?= date('Y-m-d') ?>" placeholder="YYYY-MM-DD" required><br>
     <button type="submit" name="save">Save & Calculate BMI</button>
   </p>
 </form>
