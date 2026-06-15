@@ -5,7 +5,7 @@ $total_sessions = $conn->query("SELECT COUNT(DISTINCT log_date) as total FROM wo
 $total_exercises = $conn->query("SELECT COUNT(*) as total FROM workout_plans")->fetch_assoc()['total'];
 $total_logs = $conn->query("SELECT COUNT(*) as total FROM workout_logs")->fetch_assoc()['total'];
 
-$vol = $conn->query("SELECT SUM(sets_done * reps_done * weight_used) as vol FROM workout_logs")->fetch_assoc()['vol'];
+$vol = $conn->query("SELECT SUM(weight_used) as vol FROM workout_logs")->fetch_assoc()['vol'];
 $total_volume = $vol ? round($vol, 2) : 0;
 
 $latest_bmi = $conn->query("SELECT bmi, bmi_category, recorded_date FROM body_stats ORDER BY recorded_date DESC LIMIT 1")->fetch_assoc();
@@ -34,6 +34,36 @@ if ($selected_ex) {
 <html>
 <head>
 <title>Bubbly - Progress</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<h1>Bubbly Fitness Tracker</h1>
+<?php include 'nav.php'; ?>
+
+<h2>Progress</h2>
+
+<p>
+  Total Sessions: <?= $total_sessions ?><br>
+  Total Logs: <?= $total_logs ?><br>
+  Total Volume (kg): <?= $total_volume ?>
+</p>
+
+<?php if ($latest_bmi): ?>
+<p>
+  Latest BMI (<?= $latest_bmi['recorded_date'] ?>):
+  <?= $latest_bmi['bmi'] ?> - <?= $latest_bmi['bmi_category'] ?>
+</p>
+<?php endif; ?>
+
+<?php if ($ex_list->num_rows === 0): ?>
+<p>No logs yet to show progress.</p>
+<?php else: ?>
+
+<?php endif; ?>
+
+</body>
+</html>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
