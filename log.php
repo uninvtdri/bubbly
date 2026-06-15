@@ -23,7 +23,7 @@ if (isset($_GET['delete'])) {
 
 $exercises = $conn->query("SELECT DISTINCT exercise_name FROM workout_plans ORDER BY exercise_name");
 
-$logs = $conn->query("SELECT * FROM workout_logs ORDER BY log_date DESC, created_at DESC");
+$logs = $conn->query("SELECT * FROM workout_logs ORDER BY log_date DESC, id DESC");
 ?>
 <!DOCTYPE html>
 <html>
